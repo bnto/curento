@@ -1,0 +1,17 @@
+# docker-compose.override.yml
+version: '3'
+
+services:
+  app:
+    image: cthulhoo/ttrss-fpm-pgsql-static:latest
+    build:
+      dockerfile: .docker/app/Dockerfile
+      context: https://git.tt-rss.org/fox/tt-rss.git
+      args:
+        BUILDKIT_CONTEXT_KEEP_GIT_DIR: 1
+
+  web-nginx:
+    image: cthulhoo/ttrss-web-nginx:latest
+    build:
+      dockerfile: .docker/web-nginx/Dockerfile
+      context: https://git.tt-rss.org/fox/tt-rss.git
