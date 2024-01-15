@@ -1,0 +1,11 @@
+.hero-details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+
+    input {
+        font: bold 2rem monospace;
+        border: 2px solid black;
+        padding: 0.5rem;
+    }
+}

@@ -1,0 +1,46 @@
+/* You can add global styles to this file, and also import other style files */
+:root {
+    font: 1rem sans-serif;
+}
+
+div.container {
+    outline: 1px solid rebeccapurple;
+    position: relative;
+    margin: 1rem;
+    padding: 2rem 1rem;
+
+    &:before {
+        content: attr(data-template);
+        position: absolute;
+        top: 0;
+        left: 0;
+        padding: 0.25rem;
+        background-color: rebeccapurple;
+        color: white;
+        font: 0.75rem monospace;
+    }
+    &:after {
+        content: '';
+        position: absolute;
+        display: block;
+        right: 0;
+        bottom: 0;
+        height: 1rem;
+        width: 0.25rem;
+        background-color: rebeccapurple;
+    }
+    div.container {
+        outline-color: tomato;
+        &:before,
+        &:after {
+            background-color: tomato;
+        }
+        div.container {
+            outline-color: hotpink;
+            &:before,
+            &:after {
+                background-color: hotpink;
+            }
+        }
+    }
+}

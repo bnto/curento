@@ -1,0 +1,12 @@
+<div class="container" data-template="heroes.component.html">
+
+    <ul class="heroes">
+        <li *ngFor="let hero of heroes" [class.selected]="hero === selectedHero">
+            <button type="button" (click)="onSelect(hero)">
+                {{ hero.name }}
+            </button>
+        </li>
+    </ul>
+
+    <app-hero-detail [hero]="selectedHero"></app-hero-detail>
+</div>

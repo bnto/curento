@@ -1,0 +1,32 @@
+/* HeroesComponent's private CSS styles */
+.heroes {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    display: flex;
+    gap: 0.5rem;
+
+    li {
+        list-style: none;
+        &.selected button {
+            background-color: black;
+            color: white;
+        }
+    }
+    button {
+        appearance: none;
+        background: none;
+        border: none;
+        box-shadow: none;
+        padding: 0.5rem;
+        border-radius: 3px;
+        border: 1px solid black;
+        cursor: pointer;
+
+        &:hover,
+        &:focus {
+            background-color: black;
+            color: white;;
+        }
+    }
+}
