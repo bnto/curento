@@ -11,10 +11,18 @@ import { HomeComponent } from './home/home.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  title = 'ninja';
-  ninja = {
-    name: 'Ryu',
-    belt: 'Black',
+  // title = 'ninja';
+  // ninja = {
+  //   name: 'Ryu',
+  //   belt: 'Black',
+  // }
+  ninja: {name: string, belt: string };
+
+  constructor(){
+    this.ninja = {
+      name: 'Ryu',
+      belt: 'Black',
+    }
   }
   alertMe(){
     alert(this.ninja.name)

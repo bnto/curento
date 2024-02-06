@@ -1,1 +1,25 @@
 <p>directory works!</p>
+{{ ninja }}
+
+<h2>Ninja Listing</h2>
+
+<ul>
+    <li *ngFor="let ninja of ninjas">
+        <span [ngStyle]="{ backgroundColor: ninja.belt }">{{ ninja.belt }}</span>
+        {{ ninja.name }}
+        <!-- <button (click)="remove($event)">Delete</button> -->
+    </li>
+</ul>
+
+<span [class.addthisclass]="addthisclassIsTrue">[class.]</span>
+<span [ngClass]="{ 'addthisclass' : addthisclassIsTrue }">[ngClass]</span>
+
+<span [style.backgroundColor]="( addthisclassIsTrue ? 'tomato' : '')">[style.]</span>
+<span [ngStyle]="{
+    backgroundColor : ( addthisclassIsTrue ? 'tomato' : ''),
+    color: 'white',
+    }">[style.]</span>
+
+<!-- template reference variable -->
+<input #phone placeholder="phone number" />
+<button type="button" (click)="handleClick(phone)">Call</button>

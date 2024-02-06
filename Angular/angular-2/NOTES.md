@@ -1,3 +1,4 @@
+```javascript
 // Classes
 
 class Car {
@@ -51,6 +52,7 @@ home.component.html
 
 */
 
+```
 
 Angular data flow (into the view)
 - string interpolation {{ name }}
@@ -107,3 +109,62 @@ ROUTING angular
 
 router links:
 <a [routerLink]="['/']">Home</a>
+
+
+### Directives
+Directives are instructions which tell angular to do something
+```<router-outlet></router-outlet>```
+```[routerLink]=""```
+
+#### attribute directives (ngClass)
+```<p [ngClass]=""></p>```
+
+#### structural directives (ngIf)
+```<p *ngIf=""></p>```
+```*ngFor```
+
+
+### Property binding
+
+```component.ts``` or Class
+```ts
+title: string = 'app'
+imgSrc: string = 'image.jpg'
+```
+
+```component.html``` or template
+```html
+<h1 [innerHtml]="title"></h1>
+<img [src]="imgSrc"></h1>
+```
+
+### 2 way binding
+
+The banana box:
+
+```([])```
+
+Property binding ```[]```
+Event binding ```()```
+
+1. sets a property in the code
+2. listens for DOM element change
+
+For inputs:
+```ngModel``` & import ```FormModule```
+
+in ```component.ts```
+```typescript
+favoriteAnimal: string = "turle";
+```
+
+in ```component.html```
+```html
+<input [(ngModel)]="favoriteAnimal" />
+```
+
+### Template reference variable
+```html
+<input #phone placeholder="phone number" />
+<button type="button" (click)="callPhone(phone.value)">Call</button>
+```

@@ -1,6 +1,13 @@
 <p>home works!</p>
+<h1>{{ title }}</h1>
 
-<input [(ngModel)]="ninja.name">
+<!-- Property binding: -->
+<h1 [innerHtml]="title"></h1>
+<img [src]="imgSrc" alt="">
+<input [(ngModel)]="name">
+{{ name }}
+
+<!-- <input [(ngModel)]="ninja.name">
 {{ ninja.name }}
 
-<button (click)="fireAlertMeEvent()">Alert</button>
+<button (click)="fireAlertMeEvent()">Alert</button> -->
