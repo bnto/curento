@@ -11,9 +11,11 @@ import { FormsModule } from '@angular/forms';
 
 
 export class HomeComponent {
-  @Input() ninja: any
+  @Input()
+  ninja: any
 
-  @Output() onAlertMe = new EventEmitter()
+  @Output()
+  onAlertMe = new EventEmitter()
 
   fireAlertMeEvent(){
     this.onAlertMe.emit();

@@ -5,5 +5,22 @@
 </ul>
 <!-- <app-home [ninja]="ninja" (onAlertMe)="alertMe()"></app-home> -->
 
+<input type="text" [value]="name" (input)="handleChange($event)" />
+<p>{{ name }}</p>
+
+<ng-container *ngIf="name.length; then nameList; else noName"></ng-container>
+
+{{ nameList }}
+{{ noName }}
+
+<ng-template #nameList>
+    <h1>nameList</h1>
+</ng-template>
+
+<ng-template #noName>
+    <h1>noName</h1>
+</ng-template>
 
 <router-outlet></router-outlet>
+
+<app-input></app-input>

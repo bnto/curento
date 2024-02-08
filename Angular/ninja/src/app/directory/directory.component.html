@@ -11,6 +11,10 @@
     </li>
 </ul>
 
+<span *ngIf="checked.checked">checked!</span>
+<input #checked type="checkbox" />
+
+
 <span [class.addthisclass]="addthisclassIsTrue">[class.]</span>
 <span [ngClass]="{ 'addthisclass' : addthisclassIsTrue }">[ngClass]</span>
 

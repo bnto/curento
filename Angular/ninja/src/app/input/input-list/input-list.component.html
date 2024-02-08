@@ -1,0 +1,11 @@
+<p>input-list works!</p>
+<table>
+    <thead>
+        <th>Index</th>
+        <th>Name</th>
+        <th>Belt</th>
+    </thead>
+    <tbody>
+        <app-input-details *ngFor="let ninja of ninjas" [detail]="ninja" (remove)="handleRemove($event)"></app-input-details>
+    </tbody>
+</table>
