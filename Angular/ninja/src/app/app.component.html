@@ -5,6 +5,9 @@
 </ul>
 <!-- <app-home [ninja]="ninja" (onAlertMe)="alertMe()"></app-home> -->
 
+<app-input></app-input>
+
+
 <input type="text" [value]="name" (input)="handleChange($event)" />
 <p>{{ name }}</p>
 
@@ -22,5 +25,3 @@
 </ng-template>
 
 <router-outlet></router-outlet>
-
-<app-input></app-input>

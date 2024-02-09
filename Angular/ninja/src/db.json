@@ -1,0 +1,24 @@
+{
+    "ninjas": [
+        {
+            "index": 1,
+            "name": "Ryu",
+            "belt": "black"
+        },
+        {
+            "index": 2,
+            "name": "Jackie",
+            "belt": "Yellow"
+        },
+        {
+            "index": 3,
+            "name": "Ken",
+            "belt": "Brown"
+        },
+        {
+            "index": 4,
+            "name": "Shadow",
+            "belt": "Red"
+        }
+    ]
+}

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Ninja } from '../../models/ninja';
 import { CommonModule } from '@angular/common';
 import { InputDetailsComponent } from '../input-details/input-details.component';
+import { NinjaService } from '../../ninja.service';
 
 @Component({
   selector: 'app-input-list',
@@ -11,7 +12,10 @@ import { InputDetailsComponent } from '../input-details/input-details.component'
   styleUrl: './input-list.component.css'
 })
 export class InputListComponent {
-  ninjas: Ninja[] = [
+
+  ninjas!: Ninja[];
+
+  some_ninjas: Ninja[] = [
       {
         index: 1,
         name: 'Ryu',
@@ -29,10 +33,11 @@ export class InputListComponent {
       }
     ]
 
-    // or inside the constructor like this:
+    // or like this...
     other_ninjas: Ninja[];
 
-    constructor(){
+    constructor(private ninjaService: NinjaService){
+      // ... inside the constructor
       this.other_ninjas = [
         {
           index: 1,
@@ -50,9 +55,19 @@ export class InputListComponent {
           belt: 'Brown'
         }
       ]
+
+      // but better through a service with dependecy injection in the constructor
+      this.ninjas = this.ninjaService.getOtherNinjas();
+
+      // or even better with an async call by subscribing to the service:
+      this.ninjaService.getNinjas().subscribe((data: Ninja[]) => {
+        this.ninjas = data;
+      })
     }
 
-    handleRemove(e: any){
-      alert(e.value)
+    handleRemove(event: Ninja){
+      this.ninjas = this.ninjas.filter((ninja: Ninja) => {
+        return ninja.index != event.index
+      })
     }
 }

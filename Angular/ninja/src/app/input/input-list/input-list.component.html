@@ -6,6 +6,9 @@
         <th>Belt</th>
     </thead>
     <tbody>
-        <app-input-details *ngFor="let ninja of ninjas" [detail]="ninja" (remove)="handleRemove($event)"></app-input-details>
+        <app-input-details
+            *ngFor="let ninja of ninjas"
+            [detail]="ninja"
+            (remove)="handleRemove($event)"></app-input-details>
     </tbody>
 </table>
