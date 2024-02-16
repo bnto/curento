@@ -17,17 +17,17 @@ export class InputListComponent {
 
   some_ninjas: Ninja[] = [
       {
-        index: 1,
+        id: 1,
         name: 'Ryu',
         belt: 'black'
       },
       {
-        index: 2,
+        id: 2,
         name: 'Jackie',
         belt: 'Yellow'
       },
       {
-        index: 3,
+        id: 3,
         name: 'Ken',
         belt: 'Brown'
       }
@@ -40,17 +40,17 @@ export class InputListComponent {
       // ... inside the constructor
       this.other_ninjas = [
         {
-          index: 1,
+          id: 1,
           name: 'Ryu',
           belt: 'black'
         },
         {
-          index: 2,
+          id: 2,
           name: 'Jackie',
           belt: 'Yellow'
         },
         {
-          index: 3,
+          id: 3,
           name: 'Ken',
           belt: 'Brown'
         }
@@ -67,7 +67,7 @@ export class InputListComponent {
 
     handleRemove(event: Ninja){
       this.ninjas = this.ninjas.filter((ninja: Ninja) => {
-        return ninja.index != event.index
+        return ninja.id != event.id
       })
     }
 }

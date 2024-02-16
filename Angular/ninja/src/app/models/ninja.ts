@@ -1,5 +1,5 @@
 export interface Ninja {
-    index: number;
+    id: number;
     name: string;
     belt: string;
 }

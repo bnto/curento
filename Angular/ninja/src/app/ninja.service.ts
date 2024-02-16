@@ -16,17 +16,17 @@ export class NinjaService {
   getOtherNinjas(): Ninja[] {
     return [
       {
-        index: 1,
+        id: 1,
         name: 'Ryu',
         belt: 'black'
       },
       {
-        index: 2,
+        id: 2,
         name: 'Jackie',
         belt: 'Yellow'
       },
       {
-        index: 3,
+        id: 3,
         name: 'Ken',
         belt: 'Brown'
       }
