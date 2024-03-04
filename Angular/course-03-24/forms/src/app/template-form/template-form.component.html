@@ -1,1 +1,8 @@
 <p>template-form works!</p>
+
+<ul *ngFor="let ninja of ninjas">
+    <!-- import CommonModule to use ngFor-->
+    <li>{{ ninja.name }}</li>
+    <li>{{ ninja.belt }}</li>
+    <li>{{ ninja.id }}</li>
+</ul>
