@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Ninja } from './models/ninja';
 import { Observable } from 'rxjs';
 
-const NINJA_API = "http://localhost:3000/ninja";
+const NINJA_API = "http://localhost:3000/ninjas";
 
 @Injectable({
   providedIn: 'root'
