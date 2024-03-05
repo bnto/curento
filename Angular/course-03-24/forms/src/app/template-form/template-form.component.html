@@ -5,4 +5,15 @@
     <li>{{ ninja.name }}</li>
     <li>{{ ninja.belt }}</li>
     <li>{{ ninja.id }}</li>
+    <li>{{ ninja | json }}</li>
 </ul>
+
+
+<form #form="ngForm">
+    <!-- import FormsModule to use ngForm-->
+    <input type="text" [(ngModel)]="ninja.name" name="name">
+    {{ ninja | json }}
+
+    <!-- display formdata: -->
+    {{ form.value | json }}
+</form>

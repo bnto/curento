@@ -8,17 +8,17 @@
         {
             "id": 2,
             "name": "Jackie",
-            "belt": "Yellow"
+            "belt": "yellow"
         },
         {
             "id": 3,
             "name": "Ken",
-            "belt": "Brown"
+            "belt": "brown"
         },
         {
             "id": 4,
             "name": "Shadow",
-            "belt": "Red"
+            "belt": "white"
         }
     ]
 }
