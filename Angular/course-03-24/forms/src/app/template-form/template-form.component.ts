@@ -22,7 +22,7 @@ export class TemplateFormComponent {
     this.ninja = {
       id: 5,
       name: 'okey',
-      belt: 'red'
+      belt: 'yellow'
     }
   }
 }
