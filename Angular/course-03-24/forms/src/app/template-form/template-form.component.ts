@@ -13,7 +13,7 @@ import { FormsModule } from '@angular/forms';
 })
 export class TemplateFormComponent {
   ninjas!: Ninja[];
-  ninja!: Ninja & { certified: boolean };
+  ninja!: Ninja & { certified: boolean, email: string };
 
   constructor(private ninja_service: NinjaService) {
     this.ninja_service.getNinjas().subscribe( (data: Ninja[]) => {
@@ -24,6 +24,7 @@ export class TemplateFormComponent {
       name: 'okey',
       belt: 'yellow',
       certified: false,
+      email: '',
     }
   }
 

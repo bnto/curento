@@ -14,8 +14,14 @@
     <input type="text" [(ngModel)]="ninja.name" name="name">
     {{ ninja | json }}
 
+    <hr>
+
     <!-- display formdata: -->
     {{ form.value | json }}
+
+    <!-- #form is a template reference variable-->
+
+    <hr>
 
     <!-- Radio button -->
     <input type="radio"
@@ -48,6 +54,8 @@
         >
         <label for="black">Black</label>
 
+    <hr>
+
     <!-- Checkbox input -->
     <input type="checkbox"
         name="certified"
@@ -55,4 +63,27 @@
         [ngModel]="ninja.certified"
         >
         <label for="certification">Certify Ninja</label>
+
+    <hr>
+
+    <!-- Form validation -->
+    <input type="email"
+        #ninjaEmail="ngModel"
+        name="email"
+        [(ngModel)]="ninja.email"
+        >
+    <div *ngIf="ninjaEmail.valid">Valid</div>
+    <div *ngIf="ninjaEmail.invalid">Invalid</div>
+
+    <div *ngIf="ninjaEmail.pristine">Pristine</div>
+    <div *ngIf="ninjaEmail.dirty">Dirty</div>
+
+    <div *ngIf="ninjaEmail.touched">Touched</div>
+    <div *ngIf="ninjaEmail.untouched">Untouched</div>
+
+    <!--
+        template.valid/invalid : validation
+        template.pristine/dirty : no modification yet
+        template.touched/untouched : blur
+    -->
 </form>
