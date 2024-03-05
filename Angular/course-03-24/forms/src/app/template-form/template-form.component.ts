@@ -25,4 +25,16 @@ export class TemplateFormComponent {
       belt: 'yellow'
     }
   }
+
+  handleModelChange(e: string){
+    // Using (ngModelChange) event
+    console.log(e)
+  }
+
+  handleChange(e: Event){
+    // Using (change) event
+    console.log(e)
+    let target = e.target as HTMLInputElement;
+    console.log(target.value)
+  }
 }

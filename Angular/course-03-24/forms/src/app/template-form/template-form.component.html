@@ -22,20 +22,29 @@
         name="belt"
         id="white"
         value="white"
-        [ngModel]="ninja.belt">
+        [ngModel]="ninja.belt"
+        (ngModelChange)="handleModelChange($event)"
+        (change)="handleChange($event)"
+        >
         <label for="white">White</label>
 
     <input type="radio"
         name="belt"
         id="yellow"
         value="yellow"
-        [ngModel]="ninja.belt">
+        [ngModel]="ninja.belt"
+        (ngModelChange)="handleModelChange($event)"
+        (change)="handleChange($event)"
+        >
         <label for="yellow">Yellow</label>
 
     <input type="radio"
         name="belt"
         id="black"
         value="black"
-        [ngModel]="ninja.belt">
+        [ngModel]="ninja.belt"
+        (ngModelChange)="handleModelChange($event)"
+        (change)="handleChange($event)"
+        >
         <label for="black">Black</label>
 </form>
