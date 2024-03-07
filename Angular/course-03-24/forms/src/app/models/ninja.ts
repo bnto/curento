@@ -3,3 +3,9 @@ export interface Ninja {
     name: string,
     belt: string,
 }
+
+
+export interface NinjaBeltColor {
+    key: number,
+    value: string,
+}

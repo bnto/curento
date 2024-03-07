@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Ninja } from '../models/ninja';
+import { Ninja, NinjaBeltColor } from '../models/ninja';
 import { NinjaService } from '../ninja.service';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -14,6 +14,25 @@ import { FormsModule } from '@angular/forms';
 export class TemplateFormComponent {
   ninjas!: Ninja[];
   ninja!: Ninja & { certified: boolean, email: string };
+
+  colors: NinjaBeltColor[] = [
+    {
+      key: 0,
+      value: 'Yellow'
+    },
+    {
+      key: 1,
+      value: 'Black'
+    },
+    {
+      key: 2,
+      value: 'Brown'
+    },
+    {
+      key: 3,
+      value: 'White'
+    }
+  ]
 
   constructor(private ninja_service: NinjaService) {
     this.ninja_service.getNinjas().subscribe( (data: Ninja[]) => {
