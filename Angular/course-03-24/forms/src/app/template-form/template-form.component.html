@@ -97,3 +97,30 @@
             >{{ color.value }}</option>
     </select>
 </form>
+
+<hr>
+
+<!-- ngSumbit -->
+<form #submitForm="ngForm" (ngSubmit)="handleSubmit(submitForm.value)">
+    <label for="id">id:</label>
+    <input type="text"
+        name="id"
+        id="id"
+        [ngModel]="ninja.id">
+
+    <label for="name">Name:</label>
+    <input type="text"
+        name="name"
+        id="name"
+        [ngModel]="ninja.name">
+
+    <label for="belt">Belt:</label>
+    <input type="text"
+        name="belt"
+        id="belt"
+        [ngModel]="ninja.belt">
+
+    <button type="submit">Send</button>
+
+    {{ submitForm.value | json }}
+</form>

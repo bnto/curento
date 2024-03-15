@@ -58,4 +58,8 @@ export class TemplateFormComponent {
     let target = e.target as HTMLInputElement;
     console.log(target.value)
   }
+
+  handleSubmit(formvalues: Ninja) {
+    console.log(formvalues)
+  }
 }
