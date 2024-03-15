@@ -90,10 +90,9 @@
     <hr>
 
     <!-- Select input -->
-    <select name="color" [ngModel]="ninja?.belt">
+    <select name="color" [ngModel]="ninja.belt">
         <option
             *ngFor="let color of colors"
-            [value]="ninja.belt"
             >{{ color.value }}</option>
     </select>
 </form>
