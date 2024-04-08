@@ -1,1 +1,7 @@
+<router-outlet></router-outlet>
+<a *ngFor="let item of nav"
+    [routerLink]="item.href"
+    routerLinkActive="active"
+    [routerLinkActiveOptions]="{ exact: item.exact }"
+    >{{ item.name }}</a>
 <app-template-form></app-template-form>
