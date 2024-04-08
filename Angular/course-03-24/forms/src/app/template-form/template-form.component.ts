@@ -60,6 +60,8 @@ export class TemplateFormComponent {
   }
 
   handleSubmit(formvalues: Ninja) {
-    console.log(formvalues)
+    console.log(formvalues);
+    console.log(`%c ${formvalues.name} `, `color: white; background-color: hotpink`);
+    alert(JSON.stringify(formvalues));
   }
 }
