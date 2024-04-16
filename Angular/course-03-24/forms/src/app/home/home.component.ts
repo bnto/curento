@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ElementRef, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-home',
@@ -8,5 +8,10 @@ import { Component } from '@angular/core';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-
+  @ViewChild('ref_variable') variableRef!: ElementRef;
+  constructor(private ref_variable: ElementRef){
+    this.ref_variable.nativeElement.innerText = 'Hello';
+    this.ref_variable.nativeElement.style.color = 'red';
+    console.log(this.ref_variable)
+  }
 }
