@@ -28,3 +28,19 @@ const text = this.renderer.createText('Hello');
 this.renderer.appendChild(div, text);
 this.renderer.appendChild(this.variable.nativeElement, div);
 ```
+
+ngContainer / ngTemplate / ngContent
+
+- helps grouping elements in angular
+
+```<ng-container *ngIf></ng-container>```
+- used when you don't want to use a <div>
+- can be used with directives like *ngIf
+
+```<ng-template [ngIf]="true"></ng-template>```
+- similar to regular html templates, will not show the content until you display it with js
+- not used anymore
+
+```<ng-content></ng-content>```
+```<app-details><h1></h1></app-details>```
+- used for content projection
