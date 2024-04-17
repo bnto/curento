@@ -1,3 +1,9 @@
+typescript
+
+- enum ?
+- generics ?
+- Foo<Bar> ?
+
 
 angular
 - ngContent ? & template reference variable #variable ?
@@ -44,3 +50,11 @@ ngContainer / ngTemplate / ngContent
 ```<ng-content></ng-content>```
 ```<app-details><h1></h1></app-details>```
 - used for content projection
+
+
+component vs directive
+- component has the view
+
+structural directive vs attribute directive
+- structural: modifies the structure, example: ngIf, ngFor
+- attribute: modifies the look, example: ngStyle, ngClass
