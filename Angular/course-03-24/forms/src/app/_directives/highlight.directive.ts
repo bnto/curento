@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, ElementRef, HostListener } from '@angular/core';
 
 @Directive({
   selector: '[appHighlight]',
@@ -6,6 +6,18 @@ import { Directive } from '@angular/core';
 })
 export class HighlightDirective {
 
-  constructor() { }
+  constructor(private el: ElementRef) {
+
+  }
+
+  @HostListener('mouseenter') onMouseEnter() {
+    this.el.nativeElement.style.background = 'yellow';
+  }
+
+  @HostListener('mouseleave') onMouseLeave() {
+    this.el.nativeElement.style.background = 'initial';
+  }
 
 }
+
+// This highlight custom directive is a attribute directive

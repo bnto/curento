@@ -1,4 +1,4 @@
-import { Directive } from '@angular/core';
+import { Directive, TemplateRef, ViewContainerRef } from '@angular/core';
 
 @Directive({
   selector: '[appCustomif]',
@@ -6,6 +6,16 @@ import { Directive } from '@angular/core';
 })
 export class CustomifDirective {
 
-  constructor() { }
+  customif: boolean = true;
+
+  constructor(private template: TemplateRef<any>, private vcr: ViewContainerRef) {
+    if(this.customif) {
+      this.vcr.createEmbeddedView(this.template);
+    } else {
+      this.vcr.clear();
+    }
+  }
 
 }
+
+// This customif custom directive is be a structural directive

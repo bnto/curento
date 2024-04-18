@@ -1,9 +1,11 @@
 import { Component, ElementRef, Renderer2, ViewChild } from '@angular/core';
+import { HighlightDirective } from '../_directives/highlight.directive';
+import { CustomifDirective } from '../_directives/customif.directive';
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [],
+  imports: [HighlightDirective, CustomifDirective],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css'
 })
