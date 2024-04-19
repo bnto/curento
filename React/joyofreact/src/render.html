@@ -1,0 +1,31 @@
+<html>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script>
+        function render(reactElement, containerDOMElement) {
+            // custom build render
+            const el = document.createElement(reactElement.type);
+            el.innerText = reactElement.children;
+
+            for (const key in reactElement.props){
+                const value = reactElement.props[key];
+                el.setAttribute(key, value);
+            }
+
+            containerDOMElement.appendChild(el);
+        }
+
+        const reactElement = {
+            type: 'a',
+            props: {
+                href: 'https://www.wikipedia.org/'
+            },
+            children: 'Read more on wikipedia'
+        };
+
+        const containerDOMElement = document.querySelector('#root');
+
+        render(reactElement, containerDOMElement);
+    </script>
+</html>
