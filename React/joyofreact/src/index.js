@@ -9,10 +9,18 @@ const element = React.createElement(
     'Hello World!' // content of the element
 ); // returns a react element
 
+// Create a React element with JSX
+const reactelement = (
+  <p id="hello">
+    Hello React
+  </p>
+)
+
 // 3. Render the application
 const container = document.querySelector('#root');
 const root = createRoot(container);
 root.render(element);
+root.render(reactelement);
 
 /* NOTE: old way of rendering a react app prior v18: */
 // import ReactDOM from 'react-dom';
