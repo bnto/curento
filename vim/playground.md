@@ -15,12 +15,18 @@ o - add and start at new line
 
 y - yank (copy) -> {count}{motion}
 c - change -> {count}{motion}
-d - delete -> {count}{motion}
+d - delete (cut) -> {count}{motion}
 
 repeat the operator will target the whole line:
 dd - delete line
 cc - change line (deletes and enters insert mode)
 p - paste
+
+some shortcuts
+x -> dl similar to del (delete character under the cursor)
+X -> dh similar to backspace (delete character before the cursor)
+s -> dl + insert mode
+
 
 capitalize will perform stronger or alternate behaviour
 Y - similar to yy (copy line)
@@ -49,18 +55,13 @@ B or { - block {}
 [ - block []
 t - tag
 
+{operator}{a|i}{text-object}
+examples:
+
 diB - delete everything inside the {} block
 dap - delete a paragraph
 ci' - change text inside quote ''
 . - repeat last action (example: ci' or /cucumber + daw, then n + .)
-
-some shortcuts
-x -> dl similar to del (delete character under the cursor)
-X -> dh similar to backspace (delete character before the cursor)
-s -> del + insert mode
-
-
-{operator}{a|i}{text-object}
 
 
 = - format code
@@ -68,4 +69,9 @@ u - undo
 c-r - redo
 
 /{character} - search word starting with {character} -> enter, then n to alternate/repeat
+
+Learn vim inside vim:
+- vimtutor
+- vim-adventures
+- :h usr<tab>
 
