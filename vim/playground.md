@@ -9,7 +9,9 @@ gU$ - uppercase until end of line ($)
 $ - end of the line
 0 - beginning of the line
 
-o - add and start at new line
+o - open new line below
+O - open new line above
+
 > - add identation
 < - remove identation
 
@@ -22,7 +24,10 @@ dd - delete line
 cc - change line (deletes and enters insert mode)
 p - paste
 
-some shortcuts
+yyp - yank line and paste below
+yyP - yank line and paste above
+
+## some shortcuts
 x -> dl similar to del (delete character under the cursor)
 X -> dh similar to backspace (delete character before the cursor)
 s -> dl + insert mode
@@ -32,19 +37,23 @@ capitalize will perform stronger or alternate behaviour
 Y - similar to yy (copy line)
 P - paste before the cursor
 D - deletes the line
+7dd - deletes 7 lines relative to current location
+d6j - deletes 6 lines down 
 
-Other motions:
+## Other motions:
 dG - delete until the end of the document
 i - insert before the cursor
 I - insert before line
-a - insert after cursor
-A - insert after line
+a - append after cursor
+A - append after line
 o - insert new line
+gi - inserts at the last activated insert
+
 
 dw - delete word (word) word2 -> word) word2
 dW - delete word (word) -> word2
 
-Text objects
+## Text objects
 i - inner
 a - around
 w - word - s - sentence - p - paragraph
@@ -60,6 +69,8 @@ examples:
 
 diB - delete everything inside the {} block
 dap - delete a paragraph
+>ib - add identation inside the () block
+
 ci' - change text inside quote ''
 . - repeat last action (example: ci' or /cucumber + daw, then n + .)
 
@@ -75,3 +86,47 @@ Learn vim inside vim:
 - vim-adventures
 - :h usr<tab>
 
+
+# Vim Fundamentals
+
+- <esc> or <C-c> to exit insert mode
+- x to delete next character
+- zz to center screen
+
+## Visual Command
+v : enter visual mode
+V : enter visual line mode
+viB : select inside the {} block in visual mode
+vib : select inside the () block in visual mode
+
+## Commands
+<ctrl>-s : save document
+<ctrl>-r : redo
+<shift>-$ : search current selected word
+<ctlr>-n & <ctrl>-p : tab selection
+
+<ctrl>-w s : split screen horizontally
+<ctrl>-w v : split screen horizontally
+<ctrl>-w q : quit open screen
+<ctrl>-w o : quit others
+
+## config commands:
+
+:set scrolloff=8
+:set number
+:set relativenumber
+
+# set macro-like commands in .vimrc :
+
+let mapleader = " "
+nnoremap : in n(ormal) mode, nore (non recursion execution) map
+
+## set marks
+m<character> : set marker (global with capital letter)
+'<character> : go to the set marker
+
+## navigation
+<ctrl>+6 : toggle between current file and previous file
+<ctrl>-o : history (jump) back to files
+<ctrl>-i : history (jump) forward to files
+:jumps - see list
