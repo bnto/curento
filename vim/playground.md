@@ -79,7 +79,9 @@ ci' - change text inside quote ''
 u - undo
 c-r - redo
 
+## Search
 /{character} - search word starting with {character} -> enter, then n to alternate/repeat
+:nohls - toggle off highlight search
 
 Learn vim inside vim:
 - vimtutor
@@ -130,3 +132,10 @@ m<character> : set marker (global with capital letter)
 <ctrl>-o : history (jump) back to files
 <ctrl>-i : history (jump) forward to files
 :jumps - see list
+
+
+## Quickfix
+:gr <SEARCH> `**/*.js` -> search for Quickfix
+:cnext & :cprev - navigate the quickfix results
+:copen - open the quickfix result list
+
