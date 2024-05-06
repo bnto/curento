@@ -8,12 +8,13 @@ gU$ - uppercase until end of line ($)
 
 $ - end of the line
 0 - beginning of the line
+_ - goes to the first non white space character of the line
 
 o - open new line below
 O - open new line above
 
 > - add identation
-< - remove identation
+>   < - remove identation
 
 y - yank (copy) -> {count}{motion}
 c - change -> {count}{motion}
@@ -28,19 +29,20 @@ yyp - yank line and paste below
 yyP - yank line and paste above
 
 ## some shortcuts
+
 x -> dl similar to del (delete character under the cursor)
 X -> dh similar to backspace (delete character before the cursor)
 s -> dl + insert mode
-
 
 capitalize will perform stronger or alternate behaviour
 Y - similar to yy (copy line)
 P - paste before the cursor
 D - deletes the line
 7dd - deletes 7 lines relative to current location
-d6j - deletes 6 lines down 
+d6j - deletes 6 lines down
 
 ## Other motions:
+
 dG - delete until the end of the document
 i - insert before the cursor
 I - insert before line
@@ -48,12 +50,11 @@ a - append after cursor
 A - append after line
 o - insert new line
 gi - inserts at the last activated insert
-
-
 dw - delete word (word) word2 -> word) word2
 dW - delete word (word) -> word2
 
 ## Text objects
+
 i - inner
 a - around
 w - word - s - sentence - p - paragraph
@@ -69,25 +70,26 @@ examples:
 
 diB - delete everything inside the {} block
 dap - delete a paragraph
->ib - add identation inside the () block
+
+> ib - add identation inside the () block
 
 ci' - change text inside quote ''
 . - repeat last action (example: ci' or /cucumber + daw, then n + .)
-
 
 = - format code
 u - undo
 c-r - redo
 
 ## Search
+
 /{character} - search word starting with {character} -> enter, then n to alternate/repeat
 :nohls - toggle off highlight search
 
 Learn vim inside vim:
+
 - vimtutor
 - vim-adventures
 - :h usr<tab>
-
 
 # Vim Fundamentals
 
@@ -96,12 +98,14 @@ Learn vim inside vim:
 - zz to center screen
 
 ## Visual Command
+
 v : enter visual mode
 V : enter visual line mode
 viB : select inside the {} block in visual mode
 vib : select inside the () block in visual mode
 
 ## Commands
+
 <ctrl>-s : save document
 <ctrl>-r : redo
 <shift>-$ : search current selected word
@@ -124,18 +128,25 @@ let mapleader = " "
 nnoremap : in n(ormal) mode, nore (non recursion execution) map
 
 ## set marks
+
 m<character> : set marker (global with capital letter)
 '<character> : go to the set marker
 
 ## navigation
+
 <ctrl>+6 : toggle between current file and previous file
 <ctrl>-o : history (jump) back to files
 <ctrl>-i : history (jump) forward to files
 :jumps - see list
 
-
 ## Quickfix
+
 :gr <SEARCH> `**/*.js` -> search for Quickfix
 :cnext & :cprev - navigate the quickfix results
 :copen - open the quickfix result list
 
+## Comment code
+
+gcc - comment line
+gc<character>
+9gc<direction> - comment next 9 lines
