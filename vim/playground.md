@@ -155,19 +155,19 @@ gc<character>
 
 `_`, `0`, `$`, `D`, `C`, `S`, `f`, `,`, `;`, `t`, `F`, and `T`
 
-\_ : goes to the first non blank of the line
-0 : goes to the beginning of the line
-$ : goes to the end of the line
-D : delete line until cursor position, eq. to d$
-C : changes everything in front of the cursor position, eq. to c$
-S : deletes whole line, respects indenting and goes into insert mode
+`\_` : goes to the first non blank of the line
+`0` : goes to the beginning of the line
+`$` : goes to the end of the line
+`D` : delete line until cursor position, eq. to d$
+`C` : changes everything in front of the cursor position, eq. to c$
+`S` : deletes whole line, respects indenting and goes into insert mode
 
 <!-- TODO: check the substitute.lua plugin for conflicts with s-movement -->
 
-s : xi, deletes and goes into insert mode
-f : goes to first f{character}, repeat with ; and go back with ,
-t : goes in front of the first t{character}
-F & T : same but in reverse
+`s` : xi, deletes and goes into insert mode
+`f` : goes to first f{character}, repeat with ; and go back with ,
+`t` : goes in front of the first t{character}
+`F` & `T` : same but in reverse
 
 NOTE: can be combined with d/c/y
 example with dt) : function test(word) -> function test()
@@ -180,4 +180,10 @@ example with df<space> : test(word, word2, word3) -> test(word, word3)
 Rely on jumps:
 10k : go 10 up
 
-### { and }
+### Ctrl+d / Ctrl+u
+
+move up/down one page jump
+
+### [m / ]m and [M / ]M
+
+Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
