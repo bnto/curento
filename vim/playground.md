@@ -8,7 +8,7 @@ gU$ - uppercase until end of line ($)
 
 $ - end of the line
 0 - beginning of the line
-_ - goes to the first non white space character of the line
+\_ - goes to the first non white space character of the line
 
 o - open new line below
 O - open new line above
@@ -150,3 +150,34 @@ m<character> : set marker (global with capital letter)
 gcc - comment line
 gc<character>
 9gc<direction> - comment next 9 lines
+
+## Horizontal Movement
+
+`_`, `0`, `$`, `D`, `C`, `S`, `f`, `,`, `;`, `t`, `F`, and `T`
+
+\_ : goes to the first non blank of the line
+0 : goes to the beginning of the line
+$ : goes to the end of the line
+D : delete line until cursor position, eq. to d$
+C : changes everything in front of the cursor position, eq. to c$
+S : deletes whole line, respects indenting and goes into insert mode
+
+<!-- TODO: check the substitute.lua plugin for conflicts with s-movement -->
+
+s : xi, deletes and goes into insert mode
+f : goes to first f{character}, repeat with ; and go back with ,
+t : goes in front of the first t{character}
+F & T : same but in reverse
+
+NOTE: can be combined with d/c/y
+example with dt) : function test(word) -> function test()
+example with df<space> : test(word, word2, word3) -> test(word, word3)
+
+## Vertical Movement
+
+### Core movements
+
+Rely on jumps:
+10k : go 10 up
+
+### { and }
