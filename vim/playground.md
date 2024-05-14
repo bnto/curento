@@ -147,9 +147,9 @@ m<character> : set marker (global with capital letter)
 
 ## Comment code
 
-gcc - comment line
-gc<character>
-9gc<direction> - comment next 9 lines
+`gcc` - comment line
+`gc<character>`
+`9gc<direction>` - comment next 9 lines
 
 ## Horizontal Movement
 
@@ -187,3 +187,65 @@ move up/down one page jump
 ### [m / ]m and [M / ]M
 
 Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
+
+`C-a` increments & `C-x` decrements digit, can also be combined with `{number}C-a`
+
+`gU{motion}` change to uppercase, ex. `gUi{`: uppercase text inside the {}- block
+
+## Summary
+
+`c` Change
+`d` Delete
+`y` Yank (copy)
+`gu` & `gU` Make lowercase & uppercas
+`>` & `<` Shift right & left
+`!` Filter through an external program
+
+`gg` & `G` Top & bottom of the document
+`f{character}` Jump to next {character}
+`t{character}` Jump if front of next {character}
+
+`gc{motion}` Comment out
+
+### Some motions
+
+`aw` around word
+`iw` inner word
+`i{` inner {}-block
+
+## Repeat command
+
+<!-- TODO: -->
+
+`.`
+`,`
+`;`
+
+## Insert mode chords
+
+`C-h` Backspace
+`C-w` Delete back one word
+`C-u` Delete back line
+`Esc` Switch to normal mode
+`C-o` Switch to insert normal mode
+`C-r{register}` Paste (`:di` or `:reg` to display registers)
+`C-v{u-hexa}{code}` Insert character (Find numeric code with `ga`)
+`C-k{char}{char}` Insert character by digraph
+
+## Replace mode
+
+`R` Start replacing text
+`r{character}` / `gr{character}` Replace character under cursor
+
+## Visual mode
+
+`v` Enter visual mode
+`V` Enter visual line mode
+`C-v` Enter visual block mode
+`C-g` Toggle between Visual & Select mode
+`gv` Reselect last visual
+`o` Go the the other end of the highlighted text
+
+## Power features
+
+`C-r=` Paste result of a prompt while in insert mode
