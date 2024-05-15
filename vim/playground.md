@@ -249,3 +249,40 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 ## Power features
 
 `C-r=` Paste result of a prompt while in insert mode
+
+## Command line mode
+
+`:` Enter command line mode
+`/` Search prompt
+
+`C-h` Backspace
+`C-w` Delete back one word
+`C-u` Delete back line
+
+`:p[rint]` Print command, echoes line
+`:d[elete]` Delete command
+`:co[py]` or `:t` Copy command
+`:s[ubstitute]` Substitute command
+`:m[ove]` Move command
+`:[norm]al` Normal mode
+
+Using ranges:
+`:{start},{end}p` Echoes range of lines
+`:/{start}/{offset},/{end}/{offset}p` Echoes range of lines using patterns
+`:{range}t[copy]{address}` Copy line at {range} and put it at {address}
+`:{range}m[ove]{address}` Move live at {range} and put it at {address}
+
+examples:
+`:2,5d` Deletes from line 2 to 5
+`:.,5p` Prints from current line to line 5
+`:%p` / `:1,$p` Echo all the lines in the file
+
+`:/<html>/,/<\/html>/d` Delete the `<html></html>` block
+`:/<html>/+1,/<\/html>/-1d` Delete inside the`<html></html>` block
+
+`:%s/foo/bar` Substitute all first foo with bar
+
+`:6t.` Copy line 6 and put it below current line
+
+`:%norm A;` Add a `;` at the end of every line
+`:+1,$norm i// ` Add `// ` to the beginning of the next line until the last
