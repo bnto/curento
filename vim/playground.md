@@ -200,6 +200,7 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 `gu` & `gU` Make lowercase & uppercas
 `>` & `<` Shift right & left
 `!` Filter through an external program
+`*` Jump to next match of the word under the cursor
 
 `gg` & `G` Top & bottom of the document
 `f{character}` Jump to next {character}
@@ -211,13 +212,15 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 
 `aw` around word
 `iw` inner word
-`i{` inner {}-block
+`i{` inside {}-block
+`it` inside tag, see `:h tag-blocks`
+`J` Move up the line below
 
 ## Repeat command
 
 <!-- TODO: -->
 
-`.`
+`.` Repeat previous serie of keystrokes
 `,`
 `;`
 
@@ -226,16 +229,20 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 `C-h` Backspace
 `C-w` Delete back one word
 `C-u` Delete back line
+
 `Esc` Switch to normal mode
-`C-o` Switch to insert normal mode
+`C-o` Switch to insert normal mode (allows to execute a normal mode motion before going back to insert mode again)
+
+`C-r=` Paste result of a prompt while in insert mode
 `C-r{register}` Paste (`:di` or `:reg` to display registers)
+
 `C-v{u-hexa}{code}` Insert character (Find numeric code with `ga`)
 `C-k{char}{char}` Insert character by digraph
 
 ## Replace mode
 
 `R` Start replacing text
-`r{character}` / `gr{character}` Replace character under cursor
+`r{character}` Replace character under cursor
 
 ## Visual mode
 
@@ -245,19 +252,23 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 `C-g` Toggle between Visual & Select mode
 `gv` Reselect last visual
 `o` Go the the other end of the highlighted text
-
-## Power features
-
-`C-r=` Paste result of a prompt while in insert mode
+`VG` Visually select until end of the document
 
 ## Command line mode
 
 `:` Enter command line mode
 `/` Search prompt
+`@:` Repeat last command
+
+`q:` Open the command line window with history of commands, see `cmdwin`
+`q/` Open the command line window with history searches
 
 `C-h` Backspace
 `C-w` Delete back one word
 `C-u` Delete back line
+
+`C-r C-w` Get the word under the cursor to insert in the command line
+`C-r C-a` Get the WORD under the cursor to insert in the command line
 
 `:p[rint]` Print command, echoes line
 `:d[elete]` Delete command
@@ -265,6 +276,8 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 `:s[ubstitute]` Substitute command
 `:m[ove]` Move command
 `:[norm]al` Normal mode
+
+`:!{command}%` Execute command to the current file
 
 Using ranges:
 `:{start},{end}p` Echoes range of lines
@@ -286,3 +299,8 @@ examples:
 
 `:%norm A;` Add a `;` at the end of every line
 `:+1,$norm i// ` Add `// ` to the beginning of the next line until the last
+
+`:%s//<C-r><C-w>/g` Substitute all matching search occurence (using `*`) with current word under the cursor (using `<C-r><C-w>`)
+`:h <C-r><C-w>` Look up current word in help
+
+`:!node %` Run node on the current file
