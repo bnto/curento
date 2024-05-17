@@ -262,6 +262,7 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 
 `q:` Open the command line window with history of commands, see `cmdwin`
 `q/` Open the command line window with history searches
+`!{motion}` Enter command line mode using a motion
 
 `C-h` Backspace
 `C-w` Delete back one word
@@ -276,8 +277,10 @@ Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
 `:s[ubstitute]` Substitute command
 `:m[ove]` Move command
 `:[norm]al` Normal mode
+`:r[ead] !{cmd}` Insert cmd output into the file
+`:w[rite] !{cmd}` Pipes the content into the cmd
 
-`:!{command}%` Execute command to the current file
+`:!{cmd}%` Execute command to the current file
 
 Using ranges:
 `:{start},{end}p` Echoes range of lines
@@ -304,3 +307,13 @@ examples:
 `:h <C-r><C-w>` Look up current word in help
 
 `:!node %` Run node on the current file
+`:!ls` List content of current directory
+`:ls` List content of the buffer list
+
+`:r !ls` Output list content into the file
+`:w !say` Pipe content to the 'say' command
+
+Using external sort command
+`:{start},{end}!sort -t'{field seperator}' -k{key}`
+`!sort -t',' -k2` Sort by the second field using `,` as a field seperator
+
