@@ -1,0 +1,8 @@
+<p>ninja-form works!</p>
+
+{{ ninja | json }}
+<!-- Import CommonModule to use json pipe -->
+
+<button
+*ngFor="let ninja of ninjas"
+(click)="handleClick(ninja.id)">{{ ninja.name }}</button>
