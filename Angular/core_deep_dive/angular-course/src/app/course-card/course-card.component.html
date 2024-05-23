@@ -1,0 +1,43 @@
+<!-- ngClass & ngStyle -->
+<div [ngClass]="cardClasses()" [ngStyle]="cardStyles()" class="course-card">
+  <!-- ngIf -->
+  <div *ngIf="course.description" class="course-title">
+    {{ cardIndex + " " + course.description }}
+  </div>
+
+  <!-- ngIf with template string reference -->
+  <img
+    *ngIf="course.iconUrl; else noImage"
+    width="300"
+    alt="Angular Logo"
+    [src]="course.iconUrl"
+  />
+
+  <!-- Projection: -->
+  <!-- Only project the img tag using the select attribute -->
+  <ng-content select="img"></ng-content>
+  <!-- Only project the .course-image class container -->
+  <ng-content select=".course-image"></ng-content>
+  <!-- Display the course-image component -->
+  <ng-content select="course-image"></ng-content>
+
+  <!-- Template String -->
+  <ng-template #noImage>
+    <p>No image is available</p>
+  </ng-template>
+
+  <!-- ng-container, useful to apply structural directives without available tag -->
+  <ng-container>
+    <div class="course-description">{{ course.longDescription }}</div>
+  </ng-container>
+
+  <!-- ngSwitch -->
+  <div class="course-category" [ngSwitch]="course.category">
+    <div class="category" *ngSwitchCase="'BEGINNER'">Beginner</div>
+    <div class="category" *ngSwitchCase="'INTERMEDIATE'">Intermediate</div>
+    <div class="category" *ngSwitchCase="'ADVANCED'">Advanced</div>
+    <div class="category" *ngSwitchDefault>All levels</div>
+  </div>
+
+  <button (click)="handleClick()">View Course</button>
+</div>

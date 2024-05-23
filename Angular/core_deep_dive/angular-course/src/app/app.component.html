@@ -1,0 +1,84 @@
+<div class="top-menu">
+  <img
+    class="logo"
+    src="https://angular-academy.s3.amazonaws.com/main-logo/main-page-logo-small-hat.png"
+  />
+</div>
+
+<!-- Angular built-in Pipes -->
+<div>Start Date: {{ startDate | date: "MMM dd yyyy" }}</div>
+<p>{{ title | uppercase }}</p>
+<p>{{ title | lowercase }}</p>
+<p>{{ title | titlecase }}</p>
+<p>{{ price | number: "3.3-5" }}</p>
+<p>{{ price | currency: "EUR" }}</p>
+<p>{{ rate | percent }}</p>
+<p *ngFor="let course of courses | slice: 0 : 2">{{ course | json }}</p>
+<p *ngFor="let pair of courses[0] | keyvalue">
+  {{ pair.key + ": " + pair.value }}
+</p>
+
+<button (click)="handleEditCoursesClick()">Edit Courses</button>
+
+<!-- Using ViewChild decorator with template reference: -->
+<div class="courses" #container>
+  <p>ViewChild Decorator</p>
+  <course-card
+    #cardRef
+    (selectCourse)="handleCourseSelection($event)"
+    [course]="courses[0]"
+  ></course-card>
+</div>
+
+<!-- Using *ngIf to create an alias -->
+<div class="courses" *ngIf="courses[2] as course">
+  <p>With alias and ngContent</p>
+  <course-card
+    #cardRef
+    (selectCourse)="handleCourseSelection($event)"
+    [course]="course"
+  >
+    <!-- added the #courseImage template reference to use -->
+    <!-- with the @ContentChild decorator -->
+    <div class="course-image" #courseImage>
+      <!-- Content projection: This will be displayed with ng-content -->
+      <img width="300" alt="" [src]="course.iconUrl" />
+    </div>
+    <div class="course-image" #courseImage>
+      <!-- Content projection: This will be displayed with ng-content -->
+      <img width="300" alt="" [src]="course.iconUrl" />
+    </div>
+  </course-card>
+</div>
+
+<!-- Using a component to display the image -->
+<div class="courses" *ngIf="courses[5] as course">
+  <p>Using course-image component</p>
+  <course-card (selectCourse)="handleCourseSelection($event)" [course]="course">
+    <course-image [src]="course.iconUrl"></course-image>
+    <course-image [src]="courses[3].iconUrl"></course-image>
+    <course-image [src]="courses[5].iconUrl"></course-image>
+  </course-card>
+</div>
+
+<!-- ngFor -->
+<div class="courses">
+  <p>ngFor</p>
+  <course-card
+    *ngFor="
+      let course of courses;
+      index as _i;
+      first as isFirst;
+      last as isLast;
+      even as isEven;
+      odd as isOdd
+    "
+    [class.is-first]="isFirst"
+    [class.is-last]="isLast"
+    [class.is-even]="isEven"
+    [class.is-odd]="isOdd"
+    (selectCourse)="handleCourseSelection($event)"
+    [course]="course"
+    [cardIndex]="_i + 1"
+  ></course-card>
+</div>
