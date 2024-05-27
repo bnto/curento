@@ -7,10 +7,12 @@ import {
   ElementRef,
   ContentChildren,
   QueryList,
+  TemplateRef,
 } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { Course } from '../model/course';
+import { CourseImageComponent } from '../course-image/course-image.component';
 
 @Component({
   selector: 'course-card',
@@ -33,6 +35,10 @@ export class CourseCardComponent {
   @Input()
   cardIndex: number;
 
+  // Passing a template from the parent component
+  @Input()
+  trTpl: TemplateRef<any>;
+
   // (selectCourse)="handleCourseSelection($event)"
   @Output()
   selectCourse: EventEmitter<Course> = new EventEmitter();
@@ -45,7 +51,10 @@ export class CourseCardComponent {
   image: ElementRef;
 
   @ContentChildren('courseImage')
-  images: QueryList<ElementRef>;
+  images: QueryList<CourseImageComponent>;
+
+  @ContentChildren('courseImage', { read: ElementRef })
+  imagesRef: QueryList<ElementRef>;
 
   // @ContentChildren query a collection of element that match the query
 

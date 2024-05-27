@@ -12,6 +12,10 @@
     alt="Angular Logo"
     [src]="course.iconUrl"
   />
+  <!-- Template Segment -->
+  <ng-template #noImage>
+    <p>No image is available</p>
+  </ng-template>
 
   <!-- Projection: -->
   <!-- Only project the img tag using the select attribute -->
@@ -21,10 +25,6 @@
   <!-- Display the course-image component -->
   <ng-content select="course-image"></ng-content>
 
-  <!-- Template String -->
-  <ng-template #noImage>
-    <p>No image is available</p>
-  </ng-template>
 
   <!-- ng-container, useful to apply structural directives without available tag -->
   <ng-container>

@@ -61,6 +61,39 @@
   </course-card>
 </div>
 
+<!-- Using ng-template with a context -->
+<ng-template #templateReference let-courseName="description">
+  <p>This is using a ng-template with a scoped variable {{ courseName }}</p>
+</ng-template>
+<!-- Instantiate the template with ngTemplateOutlet directive -->
+<!-- and give it a context -->
+<div
+  *ngTemplateOutlet="
+    templateReference;
+    context: { description: courses[0].description }
+  "
+></div>
+<div
+  *ngTemplateOutlet="
+    templateReference;
+    context: { description: courses[3].description }
+  "
+></div>
+<!-- also works with ng-container -->
+<ng-container
+  *ngTemplateOutlet="
+    templateReference;
+    context: { description: courses[5].description }
+  "
+></ng-container>
+<!-- Passing the template to the component: -->
+<p>Passing the template to the component</p>
+<course-card
+  (selectCourse)="handleCourseSelection($event)"
+  [course]="courses[2]"
+  [trTpl]="templateReference"
+></course-card>
+
 <!-- ngFor -->
 <div class="courses">
   <p>ngFor</p>
