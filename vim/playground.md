@@ -317,3 +317,63 @@ Using external sort command
 `:{start},{end}!sort -t'{field seperator}' -k{key}`
 `!sort -t',' -k2` Sort by the second field using `,` as a field seperator
 
+## Managing files in vim
+
+`:ls` List loaded buffers
+`:bnext` & `:bprev` or `<C-6>` to alternate between buffers
+
+### Window and tabs
+
+`<C-w>s` `:sp[lit] {file}` Split window horizontally
+`<C-w>v` `:vsp[lit] {file}` Split window vertically
+`<C-w>T` Move current window to a tab
+
+`{#}gt` Switch to tab #
+`gt` Switch to next tab
+`gT` Switch to previous tab
+
+`<C-g>` Echoes the name & status of the current file
+
+### Using netrw
+
+`:E[xplore]` Open netrw
+`:Sex[plore]` Open netrw horizontally
+`:Vex[plore]` Open netrw vertically
+
+`<CR>` Open file or expand directory
+`-` Open parent directory
+
+## Navigate with More motions
+
+The home row: `a` `s` `d` `f` and `j` `k` `l` `;`
+
+horizontal movement with:
+`w` Forward start of word
+`e` Forward end of word
+`b` Backward start of word
+`ge` Backward end of word (better to use `be` instead)
+
+When a line has wrapped, use `gj` or `gk` to move to the display line
+
+Use `ea` to append at the end of the word
+`gea` Append at the end of previous word
+
+#### Misc.
+
+`ya{` Yank around `{`
+`viw` Select word
+
+`F)` Jump back to the closing `)`
+`t)` Jump forward before (`un[t]ill`) the closing `)`
+Use `;` and `,` to jump again
+
+`yiW` Yank complete Word
+`=ap` Format whole paragraph (continious text)
+`g C-a` Increment selection serially (0,1,2,3,4,etc.)
+
+`d/{char}<CR>` Delete until next {char}
+
+`vit` Visually select inside the tag
+
+`dis` Delete a sentence, like `dd`
+`dap` Delete a paragraph and blank line
