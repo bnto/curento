@@ -178,15 +178,12 @@ example with df<space> : test(word, word2, word3) -> test(word, word3)
 ### Core movements
 
 Rely on jumps:
-10k : go 10 up
+`10k` Go 10 up
+`10G` Go to line 10
 
-### Ctrl+d / Ctrl+u
+`Ctrl+d` `Ctrl+u` move up/down one page jump
 
-move up/down one page jump
-
-### [m / ]m and [M / ]M
-
-Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M / [M`
+`[m` `]m` and `[M` `]M` Move to the next `]m` or previous `[m` open bracket, or closed bracket `]M` / `[M`
 
 `C-a` increments & `C-x` decrements digit, can also be combined with `{number}C-a`
 
@@ -321,6 +318,7 @@ Using external sort command
 
 `:ls` List loaded buffers
 `:bnext` & `:bprev` or `<C-6>` to alternate between buffers
+`:bd` Close current buffer
 
 ### Window and tabs
 
@@ -373,7 +371,38 @@ Use `;` and `,` to jump again
 
 `d/{char}<CR>` Delete until next {char}
 
-`vit` Visually select inside the tag
+`{d/c/y/v}it` Command (delete, change, yank, etc.) inside the tag
+`{d/c/y/v}at` Command (delete, change, yank, etc.) the tag
 
 `dis` Delete a sentence, like `dd`
 `dap` Delete a paragraph and blank line
+
+`d{motion}` works well with `aw` `as` `ap`
+`c{motion}` works well with `iw` `is` `ip`
+
+##### Marks
+
+`m{letter}` Set mark {letter}, globally with uppercase {letter}
+`'{letter}` Jump to mark {letter}, beginning of line
+`` `{letter}`` Jump to mark {letter}
+`:delm[arks] {letter}` Delete mark {letter}
+
+`%` Jump between opening and closing `()` `{}` `[]`
+`%` Creates a mark, use `2 x backtick` to jump back to mark
+
+##### Surround
+
+`ys{motion}{pair}` Add surrounding
+`S{pair}` Surround selection
+`ds{pair}` Delete surrounding
+`cs{pair}` Change surrounding
+`ys{motion}t` Add surrounding tag
+`cst` Change surrounding tag
+
+### File navigation (Jump List)
+
+`C-O` Jump back
+`C-i` Jump forward, also works as `<tab>` in insert mode
+`:ju[mps]` List all jumps
+`:cle[arjumps]` Clear the jump list
+
