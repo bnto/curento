@@ -165,7 +165,7 @@ m<character> : set marker (global with capital letter)
 <!-- TODO: check the substitute.lua plugin for conflicts with s-movement -->
 
 `s` : xi, deletes and goes into insert mode
-`f` : goes to first f{character}, repeat with ; and go back with ,
+`f` : goes to first f{character}, repeat with `;` and go back with `,`
 `t` : goes in front of the first t{character}
 `F` & `T` : same but in reverse
 
@@ -188,6 +188,7 @@ Rely on jumps:
 `C-a` increments & `C-x` decrements digit, can also be combined with `{number}C-a`
 
 `gU{motion}` change to uppercase, ex. `gUi{`: uppercase text inside the {}- block
+`~` Toggle uppercase
 
 ## Summary
 
@@ -219,7 +220,7 @@ Rely on jumps:
 
 `.` Repeat previous serie of keystrokes
 `,`
-`;`
+`;` Repeat last `f{character}` chord
 
 ## Insert mode chords
 
@@ -405,4 +406,53 @@ Use `;` and `,` to jump again
 `C-i` Jump forward, also works as `<tab>` in insert mode
 `:ju[mps]` List all jumps
 `:cle[arjumps]` Clear the jump list
+
+## Registers
+
+`xp` Transpose/Invert the next two characters
+`ddp` Transpose/Invert the next two lines (cut & paste)
+`yyp` Duplicate line (copy & paster)
+`P` Paste before the cursor
+
+`"{register}y{motion}` Delete into a `{register}`
+`:delete {register}`
+
+`"{register}p` Paste from a `{register}`
+`:put {register}`
+`c-r {register}` Paste `{register}` from visual mode
+
+`ciw<c-r>0` Replace and paste from yank register
+
+`"_d{motion}` Delete without copying (black hole)
+
+`"{register}` (lowercase) Overwrites `{register}`
+`"{REGISTER}` (uppercase) Appends to `{register}`
+
+`""p` or `p` Default register, aka The unnamed register
+
+`"0` Yank register, only set when yanking
+`"+` System clipboard
+`"*` Primary clipboard (middle mouse click)
+`"=` Expression register
+
+`"%` Current filename
+`"#` Alternate filename
+`".` Last inserted text
+`":` Last Ex command
+`"/` Last search pattern
+
+## Macros
+
+`q{register}` Start recording macro in `{register}`
+`q{REGISTER}` Append recording in `{register}`
+`@{register}` Repeat the last macro in `{register}`
+`@@` Replay most recent macro
+`:normal @a` Repeat the last macro in visual mode
+
+
+`:edit!` Revert all the changes
+`:argdo normal @{register}` Apply macro to all open buffers
+
+`:cd {path}` Change directory
+`:args *.rb` Open all the `.rb` files in current directory
 
