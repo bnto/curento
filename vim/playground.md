@@ -169,9 +169,13 @@ m<character> : set marker (global with capital letter)
 `t` : goes in front of the first t{character}
 `F` & `T` : same but in reverse
 
-NOTE: can be combined with d/c/y
-example with dt) : function test(word) -> function test()
-example with df<space> : test(word, word2, word3) -> test(word, word3)
+`w` Moves at the beginning of next word
+`b` Moves at the beginning of previous word
+`e` Moves at the end of next word
+
+NOTE: can be combined with `d` `c` `y`
+example with `dt)` : function test(word) -> function test()
+example with `df<space> ` : test(word, word2, word3) -> test(word, word3)
 
 ## Vertical Movement
 
@@ -449,10 +453,15 @@ Use `;` and `,` to jump again
 `@@` Replay most recent macro
 `:normal @a` Repeat the last macro in visual mode
 
+`:put {register}` Paste `{register}` into the document
+`0"{register}y$` Cleanly copy line back into the `{register}`
 
 `:edit!` Revert all the changes
 `:argdo normal @{register}` Apply macro to all open buffers
 
 `:cd {path}` Change directory
 `:args *.rb` Open all the `.rb` files in current directory
+
+`:let {let}={value}` Set `{let}` to `{value}`
+`<C-r>={let}` Insert the value of `{let}` while in insert mode
 
