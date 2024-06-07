@@ -465,3 +465,85 @@ Use `;` and `,` to jump again
 `:let {let}={value}` Set `{let}` to `{value}`
 `<C-r>={let}` Insert the value of `{let}` while in insert mode
 
+## Patterns
+
+`/{search}\C` Case sensitive search
+`/#\([0-9a-fA-F]\{6}\|[0-9a-fA-F]\{3}\)` Magic search hex colors
+
+Using magic search
+`(`, `)` and `|` has to be escaped
+`{`, only opening curly brace needs to be escaped
+Use `\` to escape a character
+`[` and `]` doesn't need escaping
+
+`/\v#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})` Very magic search hex colors
+`/\v` Using very magic search, no escaping needed
+
+`\x` Stands for `[0-9a-fA-F]`
+`/\v#(\x{6}|\x{3})` Very magic search hex colors using `\x`
+
+`\V` Use verbatim search, very nomagic search
+
+`/\v<(\w+)\_s+\1>` Match duplicate words
+`_s` Match whitespace or line break
+`()` Submatch expression with `\1` reference
+`<>` Word boundery delimiter
+
+`%()` Group submatch without referencing it
+`\zs` Start of submatch (positive lookbehind)
+`\ze` End of submatch (positive lookahead)
+
+`/\v"[^"]+"` Word bounded by double quotes
+`/\v"\zs[^"]+\ze"` Without matching the quotes
+
+`q/` Edit current search
+
+## Search
+
+`/{search}` Execute a search
+`?{search}` Execute backward search
+`n` Jump to next match
+`N` Jump to previous match
+
+`/<c-r><c-w>` Autocomplete current highlighted word
+
+`/{search}/e` Place cursor at the end of the search
+
+`i/` Text object for operating on search matches
+Using `textobj-lastpat` plugin
+
+## Substitution
+
+`:s/{pattern}/{string}` Substitute `{pattern}` with `{string}`
+`:[range]s/{pattern}/{string}/[flags]` Full substitute command
+
+`:%s` Substitute on every line
+`:%s//` Reuse last search pattern
+
+### Flags
+
+`g` Globally, replace all matches
+`c` Confirm each substitution
+`n` Number of occurrences
+
+### Special characters (tokens)
+
+`\r` Insert a carriage return
+`\t` Insert a tab character
+`\\` Insert a single backslash
+`\1` Insert the first submatch
+`\2` Insert the second submatch (and so on, up to \9)
+`\0` Insert the entire matched pattern
+`&` Insert the entire matched pattern
+`~` Use `{string}` from the previous invocation of `:substitute`
+`\={vim script}` Evaluate expression
+
+`:%s/<c-r>/` Paste last search register in the command line
+
+`<c-r>{register}` Paste content of `{register}`
+`:%s//\=@{register}/g` Use content of `{register}`
+`g&` Repeat substitution across the entire document
+similar to `:%s//~/&`
+
+`:&&` Repeat last substitution using same flags
+
