@@ -140,3 +140,89 @@ Use `C-d` to show a list of suggestions, then `tab` / `shift-tab` to cycle throu
 
 Use `C-r C-w` to copy the word into the command mode
 `C-r C-a` to copy the WORD
+
+### The Command line window
+
+`q:` show history of EX commands
+`q/` show history of searches
+`:<C-f>` Switch to command line window when in command line mode
+
+### Invoking external programs
+
+`:!{cmd} %` Invoke external `{cmd}`, and passing the current file with `%`
+`:r !{cmd}` Read the `{cmd}` output and write it into buffer
+`:{range}w !{cmd}` Pipe/write the selected content into the `{cmd}`
+
+`:2,$!sort -t',' -k2`
+Sort the second field `-k2` from line 2 to end of document `2,$` using comma as seperator `-t','`
+
+`!{motion}` Shortcut for setting up a range, ex. `!G` to open the prompt with the `:.,$` range
+
+### Run Ex commands from a script
+
+Let's write a script in a seperate file `batch.vim`, we can then apply the script to the
+current buffer using `:source batch.vim`
+
+Here is on example of a vimscript
+
+```vim
+global/href/join
+vglobal/href/delete
+%normal A: http://vimcasts.org
+%normal yi"$p
+%substitute/\v^[^\>]+\>\s//g
+```
+
+(note: since I struggled to yank/paste the code, I used `:r !cat
+code/cmdline/batch.vim` to write the code in here)
+
+#### Apply script to multiple files
+
+Opening multiple files, and use `:argdo source batch.vim` to apply the script to all arguments
+
+The command `:args` shows the arguments list, `:first` or `:next` to move around
+
+## Working with files
+
+### Buffer list
+
+`:buffers` or `:ls` Open buffer list
+`:bnext` or `:bprev` Switch or next or previous buffer in the list
+`C-6` Switch the alternate file, ie. previously opened buffer
+`:bufdo` Apply an ex command to all the buffers (see also `:argdo`)
+`:buffer {bufname}`
+
+#### Deleting buffers
+
+`:bdelete {number}` Delete a buffer
+
+### Splitting Windows
+
+`<c-w>s` or `:sp` Split horizontally
+`<c-w>v` `:vsp` Split vertically
+
+Move around with `<c-w><c-{hjkl}>` or `<c-w>{hjkl}`
+
+`<C-w>c` or `:clo(se)` Close active window
+`<C-w>o` or `:on(ly)` Keep only active window
+
+#### Using tabs
+
+`<C-w>T` move current window in a tab
+`gt` switch to next tab
+`gT` switch to previous tab
+
+## Opening files
+
+`:e %<Tab>` Expand active buffer full file path
+`:e %:h<Tab>` Expand active buffer path, h(ead) of the file
+
+### Opening the File Explorer `netrw`
+
+`:e(dit) {path}` Open file explorer in `{path}`
+`:E(xplore)` Open file explorer for current buffer directory
+`:Se(xplore)` or `Ve(xplore)` Open file explorer horizontally or vertically
+
+#### Using vim as superuser
+
+`:w !sudo tee % > /dev/null`
