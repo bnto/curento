@@ -148,3 +148,172 @@ Virtual consoles appearance can be changed with the `setterm` command
 `setterm --reset`
 
 ## Basic bash shell commands
+
+The default shell used in many Linux distributions is the GNU Bash shell. It's
+a program that provides interactive access to the Linux system
+
+It is normally started whenever a user logs into a terminal, the `/etc/passwd`
+file contains a list of all the system user accounts
+
+`cb:x:1002:1002:,,,:/home/cb:/bin/bash`
+
+The last field, which are seperated by colons, specifies the user's shell
+program, which mean that when cb logs into the linux system, the gnu bash shell
+program is automatically started
+
+### Using the shell prompt
+
+Once a terminal emulator is started or you log into a linux virtual console,
+you get access to the shell CLI prompt. The default prompt symbol for the bash
+shell is the dollar sign `$`
+
+#### The bash manual `man`
+
+Manual for looking up information on shell commands
+
+`man <command>` Look up informations about `<command>`
+
+`man -k <search>` Search for a command
+
+## Filesystem
+
+### Common linux directory names
+
+| Directory | Usage                                                                   |
+| --------- | ----------------------------------------------------------------------- |
+| `/`       | Root of the virtual directory                                           |
+| `/bin`    | Binary, where many GNU user-level utilities are stored                  |
+| `/boot`   | Where the boot files are stored                                         |
+| `/dev`    | Where linux creates device nodes                                        |
+| `/etc`    | System configuration files directory                                    |
+| `/home`   | Home directory, where linux creates user directory                      |
+| `/lib`    | Library directory, where system and application library are stored      |
+| `/media`  | A common place for mount points used for removable media                |
+| `/mnt`    | A common place for temporarily mounting filesystems                     |
+| `/opt`    | Optional, where third-party software packages are stored                |
+| `/proc`   | Process, where current kernel, system and process information is stored |
+| `/root`   | Root user's home directory, optional                                    |
+| `/run`    | Where the runtime data is heald during system operation                 |
+| `/sbin`   | System binary, where many GNU admin-level utilites are stored           |
+| `/srv`    | Service, where local services store their files                         |
+| `/sys`    | System, where devices, drives and some kernel feature info is stored    |
+| `/tmp`    | Where temporary work files can be created and destroyed                 |
+| `/usr`    | User, a second directory hierarchy                                      |
+| `/var`    | Variable, for files that change frequently, such as log files           |
+
+The `/usr` directory is a secondary directory grouping read-only files that are
+sharable. I'll find user command, source code files, games and so on. Example
+of my current `/usr` directory: `bin games include lib lib64 libexec local
+sbin share src`
+
+### Listing files and directories
+
+`pwd` Displays the shell session's current directory, or present working directory
+
+`ls -F` The `-F` parameter flags appends a forward slash to directories which
+help to identify them if terminal is lacking colors, or if the `LS_COLORS`
+environment variable isn't set
+
+`ls -a` Display hidden files
+
+`ls -R` Recursive parameter shows files contained within subdirectories
+
+`ls -l` Long listing
+
+`ls -dl` Display information about current directory
+
+#### Filtering
+
+File globbing, process of pattern matching using wildcards
+
+`ls f?ll` Represent one character
+
+`ls f*ll` Represent any number of characters
+
+Other examples: `ls f[ae]ll` `ls f[!a]ll` `ls f[a-i]ll`
+
+#### Moving, Copying and Deleting files
+
+`mv -i` `cp -i` `rm -i` Force the shell to ask whether the file should be owerwritten
+
+`rm -f` Force the removal without confirming
+
+`ln -s {filename} {symlink_filename}` Symbolic link
+
+`ln {filename} {hardlink_filename}` Hard link, same file linked together (same inode `ls -i`)
+
+`mkdir -p` Creating directories and -p(arent) directories
+
+`rmdir` Delete directory (when empty) or `rm -r` descend into the directory and remove files
+
+#### Viewing file content
+
+`file {file}` Command to determine type of file
+
+`cat` Display the data inside a file
+
+`cat -n` Show line numbers, or only the ones that have text `cat -b`
+
+`more` or `less` Pager utility
+
+`tail` and `head` to show the last and first 10 lines of a file
+
+`tail -f` to f(ollow) changes on the file, watching/monitoring
+
+## Monitoring
+
+### Processes
+
+`ps` Peeking at the processes
+
+`-N` or `N` show the opposite of the specified parameters
+`-a` or `a` show all processes except session headers and processes without terminal
+
+`ps -ef` or `ps ef` Show everything
+
+`ps --forest` Display processes in a hierarchical listing showing parent processes
+
+`kill` and `pkill` to forcefully stop processes
+
+### Disk space
+
+`df` Show each mounted filesystem that contains data
+
+`du -sch {directory}` Shows the disk usage of a specific directory
+`-c` Show total of all the files listed `-h` Human readable `-s` Summarize all
+
+### Sorting
+
+`sort -n {file}` Numeric sort the content of a file
+
+`sort -M` Month sort
+
+`sort -k={position}` Sort based on position
+`sort -t={seperator}` Specify which character distinguish key positions
+
+### Searching
+
+`grep {parameter} {pattern} {file}` Print lines that match patterns
+
+### Compressing data
+
+`bzip2` `compress` `gzip` `xz` `zip`
+
+### Archiving data
+
+`tar -cvf {archivename} {files}` Create an archive
+
+`tar -xvf` Extract the content
+
+`tar -tf` List content of a tar file
+
+
+## Investigating shell types
+
+`cat /etc/passwd` User ID configuration showing the users default interactive shell
+
+The default interactive shell, also called login shell, starts whenever a user
+logs into a virtual console terminal or terminal emulator in the GUI
+
+`cat /etc/shells` List all installed shells
+
