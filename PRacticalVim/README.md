@@ -225,4 +225,107 @@ Move around with `<c-w><c-{hjkl}>` or `<c-w>{hjkl}`
 
 #### Using vim as superuser
 
-`:w !sudo tee % > /dev/null`
+`:w !sudo tee % > /dev/null` Force write buffer as su
+
+## Navigate files with motions
+
+```vim
+" disable arrowkeys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+```
+
+`f{char}` find next {char}, repeat with `;` and back up with `,`
+
+| Command   | Effect                                                             |
+| --------- | ------------------------------------------------------------------ |
+| `f{char}` | Forward to the next occurence of `{char}`                          |
+| `F{char}` | Backward to the previous occurence of `{char}`                     |
+| `t{char}` | Forward to the character before the next occurence of `{char}`     |
+| `T{char}` | Backward to the character after the previous occurence of `{char}` |
+| `;`       | Repeat the last character-search command                           |
+| `,`       | Reverse the last character-search command                          |
+
+`{motion}b` or `{motion})` Select parentheses
+`{motion}B` or `{motion}}` Select braces
+
+`{motion}w` Select word
+`{motion}W` Select WORD
+`{motion}s` Select sentence
+`{motion}p` Select paragraph
+
+#### Marking
+
+`m{a-zA-Z}` Marks current cursor location to the designed letter
+`'{mark}` Jumps to the line where the {mark} was set
+
+Example: `mm` and `'m`
+
+`''` Position before the last jump within current file
+`'.` Location of last change
+`'^` Location of last insertion
+`'[` Start of last yank
+`']` End of last yank
+`'<` Start of last visual selection
+
+`<C-o>` and `<C-i>` jump back and forward in the jumplist (`:jumps` show the list)
+
+`g;` go to previous change (or use this hack: `u<C-r>`)
+`g,` go forward in previous changes
+`gi` insert back on previous insert location, similar to `'^i`
+
+##### Jump to filename
+
+`gf` go to file
+
+`suffixesadd` Comma-separated list of suffixes, which are used when searching
+for a file with the `gf` command
+
+```vim
+set suffixesadd=.java
+```
+
+## Registers
+
+### Copy and Paste
+
+`xp` Transpose the next two characters
+`ddp` Transpose the order of this line and its successor
+`yyp` Duplicate line
+
+`"{register}p` or `<c-r>{register}` Paste content of the `{register}`
+
+Vim's terminology: `d` delete (cut), `y` yank (copy) and `p` put (paste)
+
+#### The black hole register
+
+`"_d{motion}` Delete text without cutting (not copying in the register)
+
+### All the registers
+
+`"{register}` Copy into the named register
+`"{REGISTER}` Appends yank to the named register
+`"_` Black hole register
+`""` Unnamed register (default when register is not specified)
+`"+` System clipboard
+`"*` Selection clipboard (X11 middle mouse button)
+`"0` Yank register (useful when previous yank got overwritten by text you want to replace)
+
+#### More registers
+
+`"=` Expression register
+`"%` Name of current file
+`"#` Name of alternate file
+`".` Last inserted text
+`":` Last Ex command
+`"/` Last search pattern
+
+### Visual mode
+
+When `p` over a visualy selected text `v{motion}`, the selected text will
+exchange positions with the text in the unnamed register, can be useful to swap
+two words
+
+
