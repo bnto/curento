@@ -307,7 +307,6 @@ Other examples: `ls f[ae]ll` `ls f[!a]ll` `ls f[a-i]ll`
 
 `tar -tf` List content of a tar file
 
-
 ## Investigating shell types
 
 `cat /etc/passwd` User ID configuration showing the users default interactive shell
@@ -317,3 +316,153 @@ logs into a virtual console terminal or terminal emulator in the GUI
 
 `cat /etc/shells` List all installed shells
 
+`echo $0` Display the name of the current shell
+
+### Process List
+
+Process list is a command, or series of commands executed within a subshell
+
+`({command})` Process list
+
+`{command}&` Run and send command in the background
+
+`jobs -l` Display list of processes running in the background (with their PID `-l`)
+
+When combining both process list and running in the background:
+
+`({command} ; {command} ; {command})&` Send process list to the background
+
+#### Co-processing
+
+`coproc {name} { {command};}` Co-processing
+
+Similar but spawns a subshell in the background
+
+Example: `coproc ( sleep 10; sleep 2)`
+
+## External and build-in commands
+
+Some build-in commands `cd`, `exit`, `pwd`, `echo`,
+
+`type cd` $ cd is a shell builtin
+`type -a echo` `which -a echo` Show all flavours of the command
+
+Note that `which` only show external commands
+
+### the history command
+
+`history -a` Update the `.bash_history`
+
+`history -n` Read updated `.bash_history`
+
+## Environment Variables
+
+`printenv` Display global environment variables
+
+`set` Display global and local environment variables
+
+`export {var_name}` and `unset {var_name}` To create remove environment variables
+
+### Shell Default Environment Variables
+
+Some default bash bourne env variables:
+`CDPATH` `HOME` `PS1` `MAIL` `MAILPATH` `MAILCHECK`
+
+### The PATH Environment Variable
+
+The `PATH` defines the directories the shell looks for commands and programs
+
+### Variable arrays
+
+```bash
+array=(zero one two three)
+echo ${array[2]} # two
+echo ${array[*]} # zero one two three
+
+array[2]=seven
+echo ${array[2]} # seven
+
+unset array[2]
+echo ${array[*]} # zero one three
+echo ${array[2]} # ' '
+echo ${array[3]} # three
+
+unset array
+echo ${array[*]} # ' '
+```
+
+## File permissions
+
+The file `/etc/passwd` matches the login name to a corresponding UID value
+
+`mysql:x:27:27:MySQL Server:/var/lib/mysql:/bin/bash`
+
+```txt
+login username : password : UID : group ID : text description : location : default shell
+```
+
+The `/etc/shadow` only accessible by root contains user records
+
+```txt
+login : encrypted password : last password change : min days : days :
+expiration : disabled : date : reserved
+```
+
+`useradd -D` display default values used to add a new user (stored in `/etc/default/useradd`)
+
+| Parameter               | Description                                                                                                                                                                                    |
+| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `-c comment `           | Add text to the new user's comment field.                                                                                                                                                      |
+| `-d {home_dir} `        | Specify a different name for the home directory other than the login name.                                                                                                                     |
+| `-e {expiry_date} `     | Specify a date, in YYYY-MM-DD format, when the account will expire.                                                                                                                            |
+| `-f {inactive_days} `   | Specify the number of days after a password expires when the account will be disabled. A value of 0 disables the account as soon as the password expires; a value of -1 disables this feature. |
+| `-g {initial_group}  `  | Specify the group name or GID of the user's login group.                                                                                                                                       |
+| `-G group {groupname} ` | Specify one or more supplementary groups the user belongs to.                                                                                                                                  |
+| `-k `                   | Copy the /etc/skel directory contents into the user's $HOME directory (must use -m as well).                                                                                                   |
+| `-m `                   | Create the user's $HOME directory.                                                                                                                                                             |
+| `-M `                   | Don't create a user's $HOME directory (used if the default setting is to create one).                                                                                                          |
+| `-n `                   | Create a new group using the same name as the user's login name.                                                                                                                               |
+| `-r `                   | Create a system account.                                                                                                                                                                       |
+| `-p {password} `        | Specify a default password for the user account.                                                                                                                                               |
+| `-s {shell} `           | Specify the default login shell.                                                                                                                                                               |
+| `-u {uid} `             | Specify a unique UID for the account.                                                                                                                                                          |
+
+---
+
+# effective-shell.com
+
+## stdin, stdout, stderr
+
+- `0` stdin
+- `1` stdout
+- `2` stderr
+
+### Handling the stderr
+
+- `2>&1` to stdout:
+
+  - Take the file with descriptor 2, which is the standard error
+  - Redirect it with the redirect symbol `>`
+  - Redirect it into the file with descriptor `(&)` `1`, which is the standard output
+
+- `2>./errors.txt` to a file
+- `2>/dev/null` to /dev/null blackhole
+- `2>>./errors.txt` append to a file
+- `> output.txt 2>&1` all to a file
+
+### Pipe an error message
+
+```bash
+mkdir ~/effective-shell/new-folder 2>&1 | tr '[:lower:]' '[:upper:]'
+```
+
+## heredoc
+
+`EOF` End Of File
+
+```bash
+python<<<EOF
+import os
+for r in range(3): print(os.open('/dev/random', os.O_RDONLY))
+EOF
+```
